@@ -8,6 +8,7 @@
 /lib
 /local
 /build
+/dist
 .cache
 /README.html
 /.hg
