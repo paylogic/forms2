@@ -19,6 +19,7 @@ Installation
 
     pip install forms2
 
+
 Usage
 -----
 
@@ -126,10 +127,12 @@ Field access control using filter syntax:
             'field_c': exclude_for_not_finance
         }
 
+
 Contact
 -------
 
 If you have questions, bug reports, suggestions, etc. please create an issue on the `GitHub project page <http://github.com/paylogic/forms2>`_.
+
 
 License
 -------
