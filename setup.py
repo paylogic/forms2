@@ -30,6 +30,7 @@ for text_file in ['README.rst', 'CHANGES.rst']:
 setup(
     name='forms2',
     description='Extra features for Django Forms',
+    long_description='\n'.join(long_description),
     version='0.1.8',
     install_requires=[
         'Django',
