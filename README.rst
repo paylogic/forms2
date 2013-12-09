@@ -131,7 +131,8 @@ Field access control using filter syntax:
 Contact
 -------
 
-If you have questions, bug reports, suggestions, etc. please create an issue on the `GitHub project page <http://github.com/paylogic/forms2>`_.
+If you have questions, bug reports, suggestions, etc. please create an issue on
+the `GitHub project page <http://github.com/paylogic/forms2>`_.
 
 
 License
