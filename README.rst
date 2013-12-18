@@ -140,7 +140,7 @@ License
 
 This software is licensed under the `MIT license <http://en.wikipedia.org/wiki/MIT_License>`_
 
-See `<LICENSE.txt>`_
+See `License <https://github.com/paylogic/forms2/blob/master/LICENSE.txt>`_
 
 
 © 2013 Paylogic International.
