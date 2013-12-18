@@ -32,6 +32,9 @@ setup(
     description='Extra features for Django Forms',
     long_description='\n'.join(long_description),
     version='0.1.8',
+    author='Paylogic International',
+    author_email='developers@paylogic.com',
+    license='MIT',
     install_requires=[
         'Django',
         'SQLAlchemy'
@@ -41,4 +44,5 @@ setup(
     tests_require=['detox'],
     cmdclass={'test': ToxTestCommand},
     include_package_data=True,
+    keywords='django forms extensions sqlalchemy acl',
 )
