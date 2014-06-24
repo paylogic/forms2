@@ -72,7 +72,7 @@ class BaseModelForm(forms.Form):
     save_instance() is responsible for writing self.instance to the database.
 
     """
-    def __init__(self, instance, data=None, files=None, *args, **kwargs):
+    def __init__(self, instance=None, data=None, files=None, *args, **kwargs):
         self._meta = self.Meta
         self.instance = instance or self._meta.model()
         mapping = getattr(self._meta, 'mapping', {})
