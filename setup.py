@@ -41,7 +41,7 @@ setup(
     ],
     packages=find_packages(exclude=['ez_setup', 'tests']),
     dependency_links=[],
-    tests_require=['detox'],
+    tests_require=['detox', 'virtualenv'],
     cmdclass={'test': ToxTestCommand},
     include_package_data=True,
     keywords='django forms extensions sqlalchemy acl',
