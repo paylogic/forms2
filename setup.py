@@ -31,7 +31,7 @@ setup(
     name='forms2',
     description='Extra features for Django Forms',
     long_description='\n'.join(long_description),
-    version='0.1.8',
+    version='0.1.9',
     author='Paylogic International',
     author_email='developers@paylogic.com',
     license='MIT',
