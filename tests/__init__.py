@@ -6,7 +6,7 @@ def record(*fields):
                 setattr(self, key, value)
 
         def __setattr__(self, name, value):
-            if not name in fields:
+            if name not in fields:
                 raise AttributeError("Illegal attribute name {0}".format(name))
             super(_Record, self).__setattr__(name, value)
 

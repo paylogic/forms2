@@ -4,7 +4,7 @@ import pytest
 from django import forms
 
 from forms2 import FieldAccess, FieldAccessMixin
-from . import record
+from tests import record
 
 
 def access_bank_details(user, instance):

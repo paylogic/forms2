@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 
 import forms2
 from forms2 import sqlalchemy
-from . import record
+from tests import record
 
 
 def _deep_instance():
@@ -141,6 +141,15 @@ def engine(request, model_class):
 def test_model_form(monkeypatch, model_form_class, model_class, model):
     """Test SAModelForm."""
     form = model_form_class(instance=model, data={})
+    assert form.is_valid()
+    with mock.patch.object(model_class, 'save') as mocked:
+        form.save()
+    mocked.assert_called_once()
+
+
+def test_model_form_without_instance(model_form_class, model_class, model):
+    """Test SAModelForm without an instance."""
+    form = model_form_class(data={})
     assert form.is_valid()
     with mock.patch.object(model_class, 'save') as mocked:
         form.save()
