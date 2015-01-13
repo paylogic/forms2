@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0.0
+-----
+
+* No logging of exception getting the id from the value (bubenkoff)
+
 
 0.1.9
 -----

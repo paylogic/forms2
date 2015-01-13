@@ -117,12 +117,7 @@ class ModelChoiceField(forms.ModelChoiceField):
         return self.queryset._entities[0].entity.primary_key[0]
 
     def prepare_value(self, value):
-        try:
-            return getattr(value, self.primary_key.name)
-        except AttributeError as e:
-            logger.exception(e)
-            pass
-        return value
+        return getattr(value, self.primary_key.name, value)
 
     def to_python(self, value):
         if value in EMPTY_VALUES:

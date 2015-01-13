@@ -1,5 +1,4 @@
-import pytest
-
+"""Tests configuration."""
 from django.conf import settings
 
 try:
@@ -7,8 +6,9 @@ try:
 except ImportError:
     empty = None
 
+from . import django_settings_test
 
-@pytest.fixture(scope='session', autouse=True)
-def django_settings():
+
+def pytest_configure():
     settings._wrapped = empty
-    settings.configure()
+    settings.configure(django_settings_test)
