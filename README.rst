@@ -10,6 +10,10 @@ a per-field access control.
    :target: https://crate.io/packages/forms2/
 .. image:: https://coveralls.io/repos/paylogic/forms2/badge.png?branch=master
    :target: https://coveralls.io/r/paylogic/forms2
+.. image:: https://readthedocs.org/projects/forms2/badge/?version=latest
+    :alt: Documentation Status
+    :scale: 100%
+    :target: https://readthedocs.org/projects/forms2/
 
 
 Installation
