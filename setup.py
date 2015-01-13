@@ -5,6 +5,8 @@ from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
 import sys
 
+from forms2 import __version__
+
 
 class ToxTestCommand(TestCommand):
 
@@ -41,7 +43,7 @@ setup(
     name='forms2',
     description='Extra features for Django Forms',
     long_description='\n'.join(long_description),
-    version='0.1.9',
+    version=__version__,
     author='Paylogic International',
     author_email='developers@paylogic.com',
     license='MIT',
