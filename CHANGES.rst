@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.0
+1.0.1
 -----
 
 * No logging of exception getting the id from the value (bubenkoff)

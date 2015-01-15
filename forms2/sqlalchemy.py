@@ -18,8 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 def model_to_dict(instance, keys, mapping=None):
-    """Returns a dict containing the data in ``instance`` suitable for passing as
-    a Form's ``initial`` keyword argument.
+    """Return a dict containing the data in ``instance`` suitable for passing as a Form's ``initial`` keyword argument.
 
     ``keys`` is an optional list of field names. If provided, only the named
     fields will be included in the returned dict.
@@ -43,7 +42,7 @@ def model_to_dict(instance, keys, mapping=None):
 
 
 def dict_to_model(instance, data, mapping=None):
-    """Assigns the values in the data dictonary to an instance.
+    """Assign the values in the data dictonary to an instance.
 
     ``data`` is the cleaned data of the form.
 
@@ -62,6 +61,7 @@ def dict_to_model(instance, data, mapping=None):
 
 
 class BaseModelForm(forms.Form):
+
     """Base class for the SQLAlchemy model form.
 
     It implements initials based on the instance and save the instance, taking
@@ -70,8 +70,8 @@ class BaseModelForm(forms.Form):
     By default, save() will call self.save_instance().
     It is necessary to override save_instance() with your own implementation.
     save_instance() is responsible for writing self.instance to the database.
-
     """
+
     def __init__(self, instance=None, data=None, files=None, *args, **kwargs):
         self._meta = self.Meta
         self.instance = instance or self._meta.model()
@@ -98,6 +98,7 @@ class BaseModelForm(forms.Form):
 
 
 class ModelChoiceField(forms.ModelChoiceField):
+
     """SQLAlchemy compatible multiple choice field."""
 
     def __init__(self, *args, **kwargs):
@@ -111,13 +112,15 @@ class ModelChoiceField(forms.ModelChoiceField):
 
     @property
     def primary_key(self):
-        if sa_version >= '0.8':
-            from sqlalchemy import inspect
-            return inspect(self.queryset._entities[0].entities[0]).primary_key[0]
-        return self.queryset._entities[0].entity.primary_key[0]
+        if self.queryset is not None:
+            if sa_version >= '0.8':
+                from sqlalchemy import inspect
+                return inspect(self.queryset._entities[0].entities[0]).primary_key[0]
+            return self.queryset._entities[0].entity.primary_key[0]
 
     def prepare_value(self, value):
-        return getattr(value, self.primary_key.name, value)
+        if self.primary_key is not None:
+            return getattr(value, self.primary_key.name, value)
 
     def to_python(self, value):
         if value in EMPTY_VALUES:
@@ -129,7 +132,9 @@ class ModelChoiceField(forms.ModelChoiceField):
 
 
 class ModelMultipleChoiceField(ModelChoiceField, forms.ModelMultipleChoiceField):
+
     """SQLAlchemy compatible multiple choice field."""
+
     def clean(self, value):
         if self.required and not value:
             raise forms.ValidationError(self.error_messages['required'])
