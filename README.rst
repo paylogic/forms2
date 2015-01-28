@@ -46,7 +46,7 @@ A simple example showing field access control:
 
 .. code-block:: python
 
-    class MyForm(Form, FieldAccessMixin):
+    class MyForm(FieldAccessMixin, Form):
         class Meta:
             access = {
                 ('field1', 'field2'): access_admin,
@@ -74,7 +74,7 @@ A more realistic example for field access control:
         if not (has_perm(user, instance, 'edit_contract_id') and has_perm(user, instance, 'do_stuff')):
                 return FieldAccess.readonly
 
-    class BankForm(Form, FieldAccessMixin):
+    class BankForm(FieldAccessMixin, Form):
         class Meta:
             access = {
                 ('bank_account', 'bank_name', 'bank_balance'): access_bank_details,
