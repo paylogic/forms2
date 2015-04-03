@@ -107,11 +107,19 @@ class ModelChoiceField(forms.ModelChoiceField):
 
     @property
     def queryset(self):
-        return self._queryset if not callable(self._queryset) else self._queryset(self)
+        if callable(self._queryset):
+            self._queryset = self._queryset(self)
+        return self._queryset
 
     @queryset.setter
     def queryset(self, value):
         self._queryset = value
+        self.widget.choices = self.choices
+
+    def __deepcopy__(self, memo):
+        result = super(forms.ChoiceField, self).__deepcopy__(memo)
+        result.queryset = result._queryset
+        return result
 
     def label_from_instance(self, obj):
         if self._label_from_instance:
