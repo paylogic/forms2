@@ -40,6 +40,7 @@ def bank_form_class(test_model_class):
 
         class Meta:
             model = test_model_class
+            fields = '__all__'
             access = {
                 ('bank_account', 'bank_name', 'bank_balance'): access_bank_details,
                 'contract_id': access_contract_id,

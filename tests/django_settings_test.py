@@ -28,3 +28,9 @@ TEST_DATABASE_NAME = None
 DATABASE_ROUTERS = {}
 TIME_ZONE = None
 URL_VALIDATOR_USER_AGENT = None
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/var/tmp',
+    }
+}

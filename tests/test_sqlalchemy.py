@@ -156,13 +156,15 @@ def test_model_form_without_instance(model_form_class, model_class, model):
     mocked.assert_called_once()
 
 
-def test_model_choice_field(query, model, session):
+@pytest.mark.parametrize('lazy', [True, False])
+def test_model_choice_field(query, model, session, lazy):
     """Test ModelChoiceField."""
     field = sqlalchemy.ModelChoiceField(query)
 
     assert field.label_from_instance(model) == repr(model)
 
-    field = sqlalchemy.ModelChoiceField(query, label_from_instance=lambda x: str(x.id))
+    field = sqlalchemy.ModelChoiceField(
+        query if not lazy else lambda field: query, label_from_instance=lambda x: str(x.id))
 
     assert field.label_from_instance(model) == '1'
 

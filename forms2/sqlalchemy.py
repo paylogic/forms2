@@ -105,6 +105,14 @@ class ModelChoiceField(forms.ModelChoiceField):
         self._label_from_instance = kwargs.pop('label_from_instance', None)
         super(ModelChoiceField, self).__init__(*args, **kwargs)
 
+    @property
+    def queryset(self):
+        return self._queryset if not callable(self._queryset) else self._queryset(self)
+
+    @queryset.setter
+    def queryset(self, value):
+        self._queryset = value
+
     def label_from_instance(self, obj):
         if self._label_from_instance:
             return self._label_from_instance(obj)
