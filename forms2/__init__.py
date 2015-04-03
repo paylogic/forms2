@@ -1,7 +1,7 @@
 """Extends Django forms with the classes that support individual field access control and edit the SQLAlchemy models."""
 __all__ = ('SAModelForm', 'FieldAccessForm', 'ModelChoiceField', 'FieldAccess', 'ModelMultipleChoiceField')
 
-__version__ = '1.1.1'
+__version__ = '1.1.2'
 
 try:
     from django import forms

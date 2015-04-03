@@ -107,9 +107,7 @@ class ModelChoiceField(forms.ModelChoiceField):
 
     @property
     def queryset(self):
-        if callable(self._queryset):
-            self._queryset = self._queryset(self)
-        return self._queryset
+        return self._queryset(self) if callable(self._queryset) else self._queryset
 
     @queryset.setter
     def queryset(self, value):
