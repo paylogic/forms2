@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.1.0
+-----
+
+* Allow to pass queryset as callable to make it lazy (bubenkoff)
+
+
 1.0.1
 -----
 
