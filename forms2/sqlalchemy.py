@@ -157,9 +157,9 @@ class ModelMultipleChoiceField(ModelChoiceField, forms.ModelMultipleChoiceField)
         if not isinstance(value, (list, tuple)):
             raise forms.ValidationError(self.error_messages['list'])
 
-        qs = self.queryset.filter(self.primary_key.in_(value))
+        qs = list(self.queryset.filter(self.primary_key.in_(value)))
         key = self.primary_key.name
-        pks = set([force_text(getattr(o, key)) for o in qs])
+        pks = set(force_text(getattr(o, key)) for o in qs)
         for val in value:
             if force_text(val) not in pks:
                 try:
@@ -170,7 +170,7 @@ class ModelMultipleChoiceField(ModelChoiceField, forms.ModelMultipleChoiceField)
         # Since this overrides the inherited ModelChoiceField.clean
         # we run custom validators here
         self.run_validators(value)
-        return list(qs)
+        return qs
 
     def prepare_value(self, value):
         if hasattr(value, '__iter__'):
